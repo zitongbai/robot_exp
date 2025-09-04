@@ -43,7 +43,7 @@ class Robot:
         return self.tau
     
     def apply_torque(self, tau: np.ndarray):
-        assert tau.shape == (self.joint_num,)
+        assert tau.shape == (self.joint_num,), f"Torque vector shape mismatch: {tau.shape} != {self.joint_num}"
         self.mj_data.ctrl[:self.joint_num] = tau
 
     def inverse_kinematics(self, 
